@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
-  <title>Navbar | Footer</title>
+  <title>Nav-footer</title>
 </head>
 <style>
   a {
@@ -37,7 +37,6 @@
     background: #003152;
     color: #fff;
     position: relative;
-    text-align: center;
     font-family: 'Ubuntu';
   }
   .section-one {
@@ -52,6 +51,12 @@
   }
   .section-one section {
     margin: 1rem 5;
+  }
+  section .left {
+    text-align: left;
+  }
+  section .right {
+    text-align: right;
   }
   .section-one h4 {
     padding: 0.5rem 0;
@@ -108,7 +113,6 @@
     }
     .section-one {
       margin-bottom: 1rem;
-      text-align: center;
     }
     .section-one h4 {
       padding: 2rem 0;
@@ -149,8 +153,10 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href="#">FAQ</a>
+              <a class="dropdown-item" href="#">Why use Docufix</a>
               <a class="dropdown-item" href="#">Feedback</a>
-              <a class="dropdown-item" href="#">User guide</a>
+              <a class="dropdown-item" href="#">Privacy policy</a>
+              <a class="dropdown-item" href="#">Terms and conditions</a>
             </div>
           </li>
           <li class="nav-item">
@@ -165,13 +171,13 @@
 
   <footer>
     <div class="section-one">
-      <section>
+      <section class="left">
         <h4>DOCUFIX</h4>
-        <p>we help you arrange sort and <br>put your files and data in order<br>for easy management</p><br>
+        <p>We help you arrange, sort, <br>compare and extract information<br>from different file formats</p><br>
   
         <p class="text-two">This app was built by <a href="#">HNGi6</a> interns</p>
       </section>
-      <section>
+      <section class="right">
         <ul>
           <li><a href="#">About us</a></li>
           <li><a href="#">Our Team</a></li>
