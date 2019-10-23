@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<title>Test</title>
+	<style type="text/css">
+		/* Global deco */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-size: calc(1em * .625);
+}
+
+body {
+  margin: 0;
+  font-size: 1.6em;
+  font-family: arial, sans-serif;
+}
+
+.main {
+  padding: 5rem 2rem;
+  background: #fff;
+}
+
+/* Global layout */
+
+.navigation {
+  background: #333;
+}
+.navigation > a {
+  display: block;
+  padding: 10px;
+  background: rgba(255,255,255,.3);
+  margin-bottom: 2px;
+  color: #fff;
+  text-decoration: none;
+}
+.navigation > a:hover,
+.navigation > a:focus,
+.navigation > a:active {
+  background: #555;
+}
+
+.nav-button {
+  display: none; /* no button by default */
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1; /* will be above everything */
+  height: 2.4rem;
+  width: 2.8rem;
+  background-color: transparent;
+  background-image: linear-gradient(to right, currentColor, currentColor);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 5px;
+  padding: 0;
+  outline: 0;
+  border: 0;
+  color: #333;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.nav-button::before,
+.nav-button::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  display: block;
+  height: 5px;
+  background: currentColor;
+  transition: .25s;
+  transition-property: transform, top;
+  will-change: transform, top;
+}
+.nav-button::before {
+  top: 0;
+}
+.nav-button::after {
+  top: calc(100% - 4px);
+}
+
+
+@media (max-width: 545px) {
+  .js-enabled html,
+  .js-enabled body {
+    overflow-x: hidden; /* you shall not pass! */
+  }
+  .js-enabled .nav-button {
+    display: inline-block;
+  }
+  .js-enabled .navigation {
+    position: absolute;
+    width: 60vw;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0; /* will be under everything */
+  }
+
+  /* styling opened nav */
+  .js-enabled .main {
+    position: relative;
+    transition: transform .25s;
+    will-change: transform;
+    min-height: 100vh;
+  }
+  .js-enabled .main.is-opened {
+    transform: translateX(60vw);
+  }
+}
+
+	</style>
+</head>
+<body>
+	<nav id="navigation" role="navigation" class="navigation">
+  <a href="http://www.alsacreations.com/">Picon bière</a>
+  <a href="https://www.goetter.fr">Melfor</a>
+  <a href="http://www.alsacreations.com/">Carola</a>
+  <a href="https://www.goetter.fr">Wurscht</a>
+  <a href="http://www.alsacreations.com/">Choucroute</a>
+  <a href="https://www.goetter.fr">Knacks</a>
+</nav>
+
+<div class="main" role="main">
+  <button class="nav-button" role="button" type="button" aria-label="navigation"></button>
+  
+  <h1>Navigation "push left JS"</h1>
+  <p>Navigation mobile-first "Push Left" librement inspiré du code du livre <a href="">Responsive Design Patterns</a> de Ethan Marcotte</p>
+  <ul>
+    <li>JavaScript pour le comportement "touch" et la génération du bouton de menu</li>
+    <li>CSS pour les styles et les transitions</li>
+  </ul>
+  <p>Le principe général est celui-ci :</p>
+  <ul>
+    <li>Si JavaScript n'est pas activé ou si le navigateur est ancien, la navigation s'affiche simplement dans le flux, de façon accessible</li>
+    <li>Sur petit écran (maxi 544px), "main" s'affiche par dessus "navigation" et le bouton de navigation "nav-button" apparaît. <br>JavaScript s'occupe de l'action "touch" en ajoutant/retirant la classe ".is-opened" sur "main".</li>
+    <li>Sur grand écran (mini 545px), "navigation" est simplement placée dans le flux en haut de "main".</li>
+  </ul>
+  <p>Lorem Elsass ipsum réchime amet non Choucroute knack tchao bissame hopla. Wotch a kofee avec ton BibalaekaesSalat et ta wurscht ?</p>
+  <p>Yeuh non che suis au réchime, je ne mange plus que des Grumbeere light et che fais de la chym avec Chulien. Tiens, un Picon sur le comptoir.</p>
+  <p>Allez tchao bissame !</p>
+</div>
+
+<script type="text/javascript">
+	(function() {
+
+// old browser or not ?
+if ( !('querySelector' in document && 'addEventListener' in window) ) {
+return;
+}
+window.document.documentElement.className += ' js-enabled';
+
+function toggleNav() {
+
+// Define targets
+var target = document.querySelector('.main');
+var button = document.querySelector('.nav-button');
+
+// click-touch event
+if ( button ) {
+  button.addEventListener('click', 
+  function (e) { 
+    target.classList.toggle('is-opened'); 
+    e.preventDefault();
+  }, false );
+}
+} // end toggleNav()
+
+toggleNav();
+}());
+</script>
+</body>
+</html>
