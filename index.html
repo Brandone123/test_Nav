@@ -221,6 +221,9 @@
 .topnav #icon {
   display: none;
 }
+.icons {
+  display: block;
+}
     </style>
 </head>
 <body>
@@ -285,14 +288,21 @@
     <script type="text/javascript">
 /* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
 function myFunction2() {
-  var x = document.getElementById("icon");
-  var y = document.getElementById("view-n");
-  if (x.style.display === "block") {
-    y.style.display = "none";
-  } else {
-    y.style.display = "block";
-  }
-} 
+  document.getElementById("view-n").classList.toggle("icons");
+}
+
+  window.onclick = function(event) {
+    if (!event.target.matches('.icon')) {
+      var icones = document.getElementsByClassName("icon");
+      var j;
+      for (j = 0; j < icones.length; j++) {
+      var openicon = icones[j];
+      if (openicon.classList.contains('icons')) {
+        openicon.classList.remove('icons');
+      }
+    }
+    }
+  } 
 </script>
     <script type="text/javascript">
       /* When the user clicks on the button,
